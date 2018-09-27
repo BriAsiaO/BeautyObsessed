@@ -31,10 +31,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1a75', end
     border-radius: 12px;
     float: inherit;
   }
-  
+
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-}

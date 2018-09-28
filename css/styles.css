@@ -1,133 +1,150 @@
 body {
-  background: rgba(0,0,112,1);
-background: -moz-linear-gradient(top, rgba(0,0,112,1) 0%, rgba(49,0,90,1) 45%, rgba(106,0,65,1) 98%, rgba(106,0,65,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,112,1)), color-stop(45%, rgba(49,0,90,1)), color-stop(98%, rgba(106,0,65,1)), color-stop(100%, rgba(106,0,65,1)));
-background: -webkit-linear-gradient(top, rgba(0,0,112,1) 0%, rgba(49,0,90,1) 45%, rgba(106,0,65,1) 98%, rgba(106,0,65,1) 100%);
-background: -o-linear-gradient(top, rgba(0,0,112,1) 0%, rgba(49,0,90,1) 45%, rgba(106,0,65,1) 98%, rgba(106,0,65,1) 100%);
-background: -ms-linear-gradient(top, rgba(0,0,112,1) 0%, rgba(49,0,90,1) 45%, rgba(106,0,65,1) 98%, rgba(106,0,65,1) 100%);
-background: linear-gradient(to bottom, rgba(0,0,112,1) 0%, rgba(49,0,90,1) 45%, rgba(106,0,65,1) 98%, rgba(106,0,65,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1a75', endColorstr='#6a0041', GradientType=0 );
-}
-.jumbotron h1 {
-  color: white;
+  background: rgba(0, 0, 112, 1);
+  background: -moz-linear-gradient(top, rgba(0, 0, 112, 1) 0%, rgba(49, 0, 90, 1) 45%, rgba(106, 0, 65, 1) 98%, rgba(106, 0, 65, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 112, 1)), color-stop(45%, rgba(49, 0, 90, 1)), color-stop(98%, rgba(106, 0, 65, 1)), color-stop(100%, rgba(106, 0, 65, 1)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 112, 1) 0%, rgba(49, 0, 90, 1) 45%, rgba(106, 0, 65, 1) 98%, rgba(106, 0, 65, 1) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 112, 1) 0%, rgba(49, 0, 90, 1) 45%, rgba(106, 0, 65, 1) 98%, rgba(106, 0, 65, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 112, 1) 0%, rgba(49, 0, 90, 1) 45%, rgba(106, 0, 65, 1) 98%, rgba(106, 0, 65, 1) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 112, 1) 0%, rgba(49, 0, 90, 1) 45%, rgba(106, 0, 65, 1) 98%, rgba(106, 0, 65, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1a75', endColorstr='#6a0041', GradientType=0);
 }
 
-.jumbotron img {
-  height: 500px;
-  width: 800px;
+.jumbotron ul {
+  margin: auto;
+  text-align: center;
+  object-fit: scale-down;
+}
+
+.jumbotron h1 {
+  text-align: center;
+  color: white;
+  border-bottom: 6px dotted white;
 }
 
 .jumbotron button {
   background-color: #ff1a75;
-    border: dotted;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 12px;
-    float: inherit;
-  }
+  border: dotted;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  float: inherit;
+}
 
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+* {
+  box-sizing: border-box
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 15s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 5s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.parallax {
+  -webkit-animation-name: parallax;
+  -webkit-animation-duration: 6s;
+  animation-name: parallax;
+  animation-duration: 3s;
+}
+
+@-webkit-keyframes parallax {
+  from {
+    opacity: .4
   }
-    * {box-sizing:border-box}
 
-    /* Slideshow container */
-    .slideshow-container {
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
-    }
+  to {
+    opacity: 1
+  }
+}
 
-    /* Hide the images by default */
-    .mySlides {
-        display: none;
-    }
+@keyframes parallax {
+  from {
+    opacity: .4
+  }
 
-    /* Next & previous buttons */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      margin-top: -22px;
-      padding: 16px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 15s ease;
-      border-radius: 0 3px 3px 0;
-    }
-
-    /* Position the "next button" to the right */
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    /* Caption text */
-    .text {
-      color: #f2f2f2;
-      font-size: 15px;
-      padding: 8px 12px;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* Number text (1/3 etc) */
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-    }
-
-    /* The dots/bullets/indicators */
-    .dot {
-      cursor: pointer;
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 5s ease;
-    }
-
-    .active, .dot:hover {
-      background-color: #717171;
-    }
-
-    /* Fading animation */
-    .fade {
-      -webkit-animation-name: fade;
-      -webkit-animation-duration: 6s;
-      animation-name: fade;
-      animation-duration: 3s;
-    }
-
-    @-webkit-keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
-    }
-
-    @keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
-    }
+  to {
+    opacity: 1
+  }
+}

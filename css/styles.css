@@ -138,3 +138,9 @@ body {
   height: 500px;
   padding: 10px;
 }
+
+.pictures p {
+  text-align: center;
+  color: white;
+  font-size: 55px;
+}

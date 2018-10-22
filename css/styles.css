@@ -19,6 +19,7 @@ body {
   margin: auto;
   text-align: center;
   object-fit: scale-down;
+  color: Purple;
 }
 
 .jumbotron h1 {

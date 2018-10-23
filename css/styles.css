@@ -52,3 +52,11 @@ body {
 }
 
 * {box-sizing:border-box}
+
+.images2 {
+  color: Black;
+  height: auto;
+  width: auto;
+  border-radius: 8px;
+
+}

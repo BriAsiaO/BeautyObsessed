@@ -25,7 +25,7 @@ body {
 .jumbotron h1 {
   text-align: center;
   color: white;
-  border-bottom: 6px dotted white;
+  border-bottom: 6px dotted White;
 }
 
 .jumbotron button {
@@ -55,8 +55,8 @@ body {
 
 .images2 {
   color: Black;
-  height: auto;
-  width: auto;
+  height: 100;
+  width: 50;
   border-radius: 8px;
 
 }

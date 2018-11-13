@@ -260,24 +260,78 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
    background: #CECECE;
    border-radius: 0;
  }
- .img2 {
-   height: 100px;
-   width: 10%;
-   float: left;
-   display:inline-flex;
-   position:fixed;
+
+ .appointmentWrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.appointmentContent {
+  padding: 2px 0px 0px 0px;
+}
 
+.appointmentTitle {
+  text-align: center;
+}
 
+.appointmentBox hr {
+  width: 100%;
+  border: 0;
+  height: 3px;
+  background-color: #D6EFFF
+}
 
+.appointment {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+}
 
+.appointment ul {
+  margin: 0;
+  padding: 15px 0px 15px 0px;
+  list-style: none;
+}
 
+.appointment ul li {
+  height: 50px;
+  padding-bottom: 15px;
+}
 
+.appointment ul:first-child {
+  margin-left: auto;
+}
 
+.appointment ul:first-child li:first-child{
+  content: url('http://static1.squarespace.com/static/57b502c8e6f2e15d055a0a9c/t/57b7c9959f7456e36f223196/1471662485602/phone.png');
+  margin-bottom: 10px;
+}
 
+.appointment ul:first-child li:last-child{
+  content: url('http://static1.squarespace.com/static/57b502c8e6f2e15d055a0a9c/t/57b7c9919f7456e36f223191/1471662481936/map.pnghttp://static1.squarespace.com/static/57b502c8e6f2e15d055a0a9c/t/57b7c9959f7456e36f223196/1471662485602/phone.png');
+}
 
+.appointment ul:last-child {
+  font-weight: 700;
+  margin: auto;
+}
 
+.appointment ul:last-child li:first-child {
+  margin-top: 10px
+}
 
+.callButton {
+  color: #444!important;
+  background-color: #edf8ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
+.mapsButton {
+  display: block;
+  color: #444!important;
+  border-radius: 5px;
+  padding: 0px 10px;
 }

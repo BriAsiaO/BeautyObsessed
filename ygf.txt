@@ -1,0 +1,7 @@
+.img2 {
+   height: 100px;
+   width: 10%;
+   float: left;
+   display:inline-flex;
+   position:fixed;
+}

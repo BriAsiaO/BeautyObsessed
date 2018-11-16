@@ -43,85 +43,97 @@
   </div>
 
   <div id="main">
- <div id="darkBack"></div>
- <div id="logo"><img src="./pic/logosample_bytailorbrands.jpg" /></div>
+    <div id="darkBack"></div>
+    <div id="logo"><img src="./pic/logosample_bytailorbrands.jpg" /></div>
 
- <div id="timeDiv">
- <label class="viewOpen" for="modal-state">View Hours&nbsp;&nbsp;<i class="fa fa-clock-o"></i></label>
- <input type="checkbox" name="modal-state" id="modal-state">
- <div class="modal-overlay">
-   <label for="modal-state" class="modal-overlay-close"></label>
-   <div class="modal">
-     <label class="button-close" for="modal-state"><i class="fa fa-times"></i></label>
-     <h2>We're Open At These Times</h2>
-     <div id="Wednesday" class="dateTime">
-       <div class="day">Wednesday</div>
-       <div class="time">4pm - 12am</div>
-     </div>
-     <br>
-     <div id="Thursday" class="dateTime">
-       <div class="day">Thursday</div>
-       <div class="time">4pm - 12am</div>
-     </div>
-     <br>
-     <div id="Friday" class="dateTime">
-       <div class="day">Friday</div>
-       <div class="time">4pm - 12am</div>
-     </div>
-     <br>
-     <div id="Saturday" class="dateTime">
-       <div class="day">Saturday</div>
-       <div class="time">1pm - 12am</div>
-     </div>
-     <br>
-     <div id="Sunday" class="dateTime">
-       <div class="day">Sunday</div>
-       <div class="time">1pm - 12am</div>
-     </div>
-     <br>
-     <div id="Monday" class="dateTime">
-       <div class="day">Monday</div>
-       <div class="time">Closed</div>
-     </div>
-     <br>
-     <div id="Tuesday" class="dateTime">
-       <div class="day">Friday</div>
-       <div class="time">Closed</div>
-     </div>
-   </div>
- </div>
-</div>
-<h1> hello</h1>
-  <script>
-var now = new Date();
-var weekday = new Array(7);
-weekday[0] = "Sunday";
-weekday[1] = "Monday";
-weekday[2] = "Tuesday";
-weekday[3] = "Wednesday";
-weekday[4] = "Thursday";
-weekday[5] = "Friday";
-weekday[6] = "Saturday";
+    <div id="timeDiv">
+      <label class="viewOpen" for="modal-state">View Hours&nbsp;&nbsp;<i class="fa fa-clock-o"></i></label>
+      <input type="checkbox" name="modal-state" id="modal-state">
+      <div class="modal-overlay">
+        <label for="modal-state" class="modal-overlay-close"></label>
+        <div class="modal">
+          <label class="button-close" for="modal-state"><i class="fa fa-times"></i></label>
+          <h2>We're Open At These Times</h2>
+          <div id="Wednesday" class="dateTime">
+            <div class="day">Wednesday</div>
+            <div class="time">4pm - 12am</div>
+          </div>
+          <br>
+          <div id="Thursday" class="dateTime">
+            <div class="day">Thursday</div>
+            <div class="time">4pm - 12am</div>
+          </div>
+          <br>
+          <div id="Friday" class="dateTime">
+            <div class="day">Friday</div>
+            <div class="time">4pm - 12am</div>
+          </div>
+          <br>
+          <div id="Saturday" class="dateTime">
+            <div class="day">Saturday</div>
+            <div class="time">1pm - 12am</div>
+          </div>
+          <br>
+          <div id="Sunday" class="dateTime">
+            <div class="day">Sunday</div>
+            <div class="time">1pm - 12am</div>
+          </div>
+          <br>
+          <div id="Monday" class="dateTime">
+            <div class="day">Monday</div>
+            <div class="time">Closed</div>
+          </div>
+          <br>
+          <div id="Tuesday" class="dateTime">
+            <div class="day">Friday</div>
+            <div class="time">Closed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <h1>hello</h1>
+    <script>
+      var now = new Date();
+      var weekday = new Array(7);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
 
-var checkTime = function() {
-var today = weekday[now.getDay()];
-var timeDiv = document.getElementById('timeDiv');
-var dayOfWeek = now.getDay();
-var hour = now.getHours();
-var minutes = now.getMinutes();
+      var checkTime = function() {
+        var today = weekday[now.getDay()];
+        var timeDiv = document.getElementById('timeDiv');
+        var dayOfWeek = now.getDay();
+        var hour = now.getHours();
+        var minutes = now.getMinutes();
 
-//add AM or PM
-var suffix = hour >= 12 ? "PM" : "AM";
+        //add AM or PM
+        var suffix = hour >= 12 ? "PM" : "AM";
 
-// add 0 to one digit minutes
-if (minutes < 10) { minutes="0" + minutes }; if ((dayOfWeek==0 || dayOfWeek==6) && hour>= 13 && hour <= 23) { hour=((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15 timeDiv.innerHTML='it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
-    ' - we\' re open!'; timeDiv.className='open' ; } else if ((dayOfWeek==3 || dayOfWeek==4 || dayOfWeek==5) && hour>= 16 && hour <= 23) { hour=((hour + 11) % 12 + 1); timeDiv.innerHTML='it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
-      ' - we\' re open!'; timeDiv.className='open' ; } else { if (hour==0 || hour> 12) {
-      hour = ((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15
-      }
-      timeDiv.innerHTML = 'It\'s ' + today + ' ' + hour + ':' + minutes + suffix + ' - we\'re closed!';
-      timeDiv.className = 'closed';
-      }
+        // add 0 to one digit minutes
+        if (minutes < 10) {
+          minutes = "0" + minutes
+        };
+        if ((dayOfWeek == 0 || dayOfWeek == 6) && hour >= 13 && hour <= 23) {
+          hour = ((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15 timeDiv.innerHTML='it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
+          ' - we\' re open!';
+          timeDiv.className = 'open';
+        } else if ((dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 16 && hour <= 23) {
+          hour = ((hour + 11) % 12 + 1);
+          timeDiv.innerHTML = 'it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
+            ' - we\' re open!';
+          timeDiv.className = 'open';
+        } else {
+          if (hour == 0 || hour > 12) {
+            hour = ((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15
+          }
+          timeDiv.innerHTML = 'It\'s ' + today + ' ' + hour + ':' + minutes + suffix + ' - we\'re closed!';
+          timeDiv.className = 'closed';
+        }
       };
 
       var currentDay = weekday[now.getDay()];
@@ -130,14 +142,14 @@ if (minutes < 10) { minutes="0" + minutes }; if ((dayOfWeek==0 || dayOfWeek==6) 
 
       setInterval(checkTime, 1000);
       checkTime();
-</script>
+    </script>
 
 
 
 
 
 
-  </body>
+</body>
 
 
 

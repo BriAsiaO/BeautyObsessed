@@ -267,213 +267,294 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
   font-family: 'Lato', sans-serif;
 }
 
-#main {
-  background: url(http://files.kaboompics.com/upload/823_min.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-  text-align: center;
-  position: absolute;
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-family:  "Baloo";
+	padding-top: 60px;
+}
+input, textarea {
+	padding: 0;
+	border: none;
+	transition: .4s;
+}
+.flex {
+	display: flex;
+}
+.flex.center-v {
+	align-items: center;
+}
+.flex.center-h {
+	justify-content: center;
+}
+.flex.center-vh {
+	align-items: center;
+	justify-content: center;
+}
+.flex.start {
+	justify-content: flex-start;
+}
+.flex.end {
+	justify-content: flex-end;
+}
+.flex.around {
+	justify-content: space-around;
+}
+.flex.between {
+	justify-content: space-between;
+}
+.flex.row {
+	flex-direction: row;
+}
+.flex.column {
+	flex-direction: column;
+}
+.flex.wrap {
+	flex-wrap: wrap;
+}
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.clickable, #calender-title,
+#calender-panel, #calender-buttons {
+	cursor: pointer;
+}
+.colorRed {
+	color: #FF6B6B;
+}
+.bgColorRed {
+	background-color: #FF6B6B;
+}
+.bgColorDarkRed {
+	background-color: #bc6969;
+}
+.width-full {
+	width: 100%;
+}
+.width-half {
+	width: 50%;
+}
+.width-3-4 {
+	width: 75%;
+}
+.width-1-4 {
+	width: 25%;
+}
+.overflow-hidden {
+	overflow: hidden;
 }
 
-#logo {
-  top: 10%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  padding: 10px;
-  max-width: 400px;
+
+#calender-wrapper {
+	position: relative;
+	border: 6px solid #FF6B6B;
+	border-radius: 10px;
+	overflow: hidden;
 }
 
-#logo img {
-  width: 100%;
-}
-
-#darkBack {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.75);
-  width: 100%;
-  height: 100%;
-}
-
-#timeDiv {
-  font-size: 15px;
-  text-transform: uppercase;
+#calender-panel {
+	z-index: 5;
   position: relative;
-  max-width: 325px;
-  background: #fff;
-  width: 85%;
-  margin: 0 auto;
-  top: 50%;
-  padding: 10px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 8px 16px -8px #adadad;
-  -moz-box-shadow: 0 8px 16px -8px #adadad;
-  box-shadow: 0 8px 16px -8px #adadad;
-  display: inline-block;
-  vertical-align: top;
-  font-weight: 600;
+	background: #FF6B6B;
+	border-top: 6px solid #FF6B6B;
+	color: white;
+	font-size: 30pt;
+	height: 60px;
 }
 
-.open {
-  color: #27ae60;
-  border: 2px solid #27ae60;
+#calender-panel p {
+	padding-right: 20px;
+}
+#calender-panel p:hover {
+	cursor: pointer;
+	transition: .2s;
 }
 
-.closed {
-  color: rgba(231, 76, 60, 0.85);
-  border: 2px solid rgba(231, 76, 60, 0.8);
+#calender-title {
+	background: #FF6B6B;
+	color: white;
+	font-size: 30pt;
+	height: 60px;
 }
 
-.viewOpen {
-  font-size: 15px;
-  text-transform: uppercase;
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  border: 2px solid rgba(70, 70, 70, 0.7);
-  max-width: 170px;
-  background: #fff;
-  width: 100%;
-  color: rgba(70, 70, 70, 0.8);
-  margin: 0 auto;
-  top: 50%;
-  padding: 10px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 8px 16px -8px #adadad;
-  -moz-box-shadow: 0 8px 16px -8px #adadad;
-  box-shadow: 0 8px 16px -8px #adadad;
-  cursor: pointer;
+#calender-title div {
+	height: 60px;
+	width: 60px;
+}
+#calender-title p {
+	height: 60px;
+	width: 150px;
 }
 
-.viewOpen i {
-  color: rgba(70, 70, 70, 0.8);
+#calender-title #left:hover span {
+	padding-right: 10px;
+	transition: .2s;
+}
+#calender-title #right:hover span {
+	padding-left: 10px;
+	transition: .2s;
 }
 
-@media all and (max-width: 600px) {
-  #timeDiv {
-    margin-bottom: 20px;
-  }
+#calender-content {
+	width: 700px;
+	padding: 10px;
+}
+#calender-panel #info {
+	border-right: 6px solid #FF6B6B;
+	height: 100%;
+	width: 75%;
+	font-size: 13pt;
+}
+#calender-panel #info div {
+	padding-left: 20px;
+	width: 100%;
+	height: 50%;
+}
+#calender-panel #info div p {
+	width: 50%;
+	height: 100%;
+	border-right: 6px solid #FF6B6B;
 }
 
-@media all and (min-width: 601px) {
-  #timeDiv {
-    margin-right: 15px;
-  }
+#calender-panel #clear {
+	height: 100%;
+	width: 25%;
+	line-height: 12px;
+	font-size: 14pt;
+	text-align: center;
+	transition: .4s;
+}
+#calender-panel #clear:hover {
+	background: #965252;
+}
+#calender-panel #clear p {
+	padding: 0;
+	margin: 0;
 }
 
-.dateTime {
-  max-width: 320px;
-  margin: 0 auto;
+#calender-buttons {
+	margin-top: 20px;
+	width: 720px;
+	height: 60px;
+	background: #FF6B6B;
+	border: 6px solid #FF6B6B;
+	border-radius: 10px;
+	transition: .4s;
+}
+#calender-buttons:hover {
+	height: 70px;
+}
+#make-booking {
+	width: 100%;
+	height: 100%;
+	font-size: 20pt;
+	color: white;
+}
+#booking-wrapper {
+	position: absolute;
+	height: 650px;
+	width: 720px;
+	background: white;
+	border-radius: 10px 10px 0 0;
+	margin-top: 150px;
+	transition: .4s;
+	overflow: hidden;
+}
+#booking-wrapper.opened {
+	margin-top: -645px;
+}
+#booking-title {
+	color: white;
+	font-size: 30pt;
+	height: 60px;
+	width: 100%;
+}
+#booking-form {
+	height: 685px;
+	width: 98%;
+	padding: 10px;
+	background: #FF6B6B;
+}
+#booking-form p {
+	margin: 20px 0 0 0;
+	color: white;
+	font-size: 14pt;
+}
+#booking-form > div:nth-child(1) p {
+	margin: 0;
+}
+#booking-form input {
+	height: 45px;
+}
+#booking-form textarea {
+	height: 235px;
+	resize: none;
+}
+#booking-form textarea, #booking-form input {
+	padding-left: 10px;
+  width: calc(100% - 12px);
+	background: white;
+	color: #FF6B6B;
+	font-family: "Baloo";
+	font-size: 14pt;
+}
+textarea.formError, input.formError {
+	transition: .4s;
+	background: #ffdddd !important;
+  box-shadow: inset 0px 0px 0px 5px rgba(205, 108, 108, 0.92);
+}
+#booking-form .width-3-4 {
+	border-right: 6px solid #FF6B6B;
 }
 
-.day {
-  display: inline-block;
-  float: left;
+.month {
+	width: 100px;
+	height: 100px;
+	transition: .4s;
 }
 
-.time {
-  display: inline-block;
-  float: right
+#days p {
+	width: 100px;
+	text-align: center;
+	font-size: 15pt;
 }
 
-.today {
-  color: rgb(200, 85, 39);
-  font-weight: 600;
+.month-selector {
+	width: 100%;
+	height: 100%;
+	transition: .4s;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
-
-@media all and (max-height: 420px) {
-  #timeDiv, .viewOpen {
-    top: 60%;
-  }
-}
-/* view hours modal */
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(173, 173, 173, 0.5);
-  display: none;
-}
-
-#modal-state {
-  display: none;
-}
-
-#modal-state:checked + .modal-overlay {
-  opacity: 1;
-  animation: fade-in .4s;
-  display: block;
-}
-
-.modal {
-  position: absolute;
-  margin: 0 auto;
-  padding: 30px 25px;
-  background: #fff;
-  right: 0;
-  left: 0;
-  text-align: center;
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  line-height: 1.8;
-}
-
-
-
-.modal h2 {
-  margin-top: 0;
-  line-height: 25px;
-  font-size: 22px;
-  border-bottom: 1px solid #dce0d8;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  font-weight: 400;
-}
-
-@media all and (max-width: 470px) {
-  .modal {
-    width: 75%;
-  }
-  .modal h2{
-    font-size: 20px;
-  }
-}
-
-#modal-state:checked + .modal-overlay .modal {
-  top: 20%;
-}
-
-.modal-overlay-close {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.button-close {
-  text-decoration: none;
-  position: absolute;
-  color: #fff;
-  background: #464646;
-  padding: 0px 7px;
-  font-weight: bold;
-  top: 0px;
-  right: 0;
-  cursor: pointer
+	.month-selector.clicked {
+		background: #FF6B6B;
+		color: white;
+	}
+	.month-selector.booked {
+		background: #743131;
+		color: white;
+		overflow: hidden;
+	}
+		.month-selector.booked:after {
+			content: 'X';
+			position: absolute;
+			margin-top: -3px;
+			font-size: 100pt;
+			font-family: "Ubuntu";
+			opacity: 0.1;
+		}
+.clickable:hover {
+	z-index: 3;
+	height: 110px;
+	width: 110px;
+	box-shadow: 0px 0px 13px 4px rgba(0, 0, 0, 0.14);
+	background: #FF6B6B;
+	color: white;
 }

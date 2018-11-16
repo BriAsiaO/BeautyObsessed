@@ -42,108 +42,315 @@
     </ul>
   </div>
 
-  <div id="main">
-    <div id="darkBack">
-    <div id="logo"><img src="./pics/LogoSample_ByTailorBrands.jpg"/></div>
+  <link href="https://fonts.googleapis.com/css?family=Baloo|Ubuntu" rel="stylesheet">
 
-    <div id="timeDiv">
-      <label class="viewOpen" for="modal-state">View Hours&nbsp;&nbsp;<i class="fa fa-clock-o"></i></label>
-      <input type="checkbox" name="modal-state" id="modal-state">
-      <div class="modal-overlay">
-        <label for="modal-state" class="modal-overlay-close"></label>
-        <div class="modal">
-          <label class="button-close" for="modal-state"><i class="fa fa-times"></i></label>
-          <h2>We're Open At These Times</h2>
-          <div id="Wednesday" class="dateTime">
-            <div class="day">Wednesday</div>
-            <div class="time">4pm - 12am</div>
-          </div>
-          <br>
-          <div id="Thursday" class="dateTime">
-            <div class="day">Thursday</div>
-            <div class="time">4pm - 12am</div>
-          </div>
-          <br>
-          <div id="Friday" class="dateTime">
-            <div class="day">Friday</div>
-            <div class="time">4pm - 12am</div>
-          </div>
-          <br>
-          <div id="Saturday" class="dateTime">
-            <div class="day">Saturday</div>
-            <div class="time">1pm - 12am</div>
-          </div>
-          <br>
-          <div id="Sunday" class="dateTime">
-            <div class="day">Sunday</div>
-            <div class="time">1pm - 12am</div>
-          </div>
-          <br>
-          <div id="Monday" class="dateTime">
-            <div class="day">Monday</div>
-            <div class="time">Closed</div>
-          </div>
-          <br>
-          <div id="Tuesday" class="dateTime">
-            <div class="day">Friday</div>
-            <div class="time">Closed</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-    <script>
-      var now = new Date();
-      var weekday = new Array(7);
-      weekday[0] = "Sunday";
-      weekday[1] = "Monday";
-      weekday[2] = "Tuesday";
-      weekday[3] = "Wednesday";
-      weekday[4] = "Thursday";
-      weekday[5] = "Friday";
-      weekday[6] = "Saturday";
+<div id="calender-wrapper">
+	<div id="calender-title" class="disable-select flex row center-v around">
+		<div id="left" class="flex row center-vh"><span><</span></div>
+		<p class="flex row center-vh"></p>
+		<div id="right" class="flex row center-vh"><span>></span></div>
+	</div>
+	<div id="days" class="flex row center-vh colorRed disable-select">
+		<p>MON</p>
+		<p>TUE</p>
+		<p>WEDS</p>
+		<p>THURS</p>
+		<p>FRI</p>
+		<p>SAT</p>
+		<p>SUN</p>
+	</div>
+	<div id="calender-content" class="flex row wrap disable-select">
+	</div>
+	<div id="booking-wrapper" class="flex column center-vh">
+		<div id="booking-title" class="flex row center-vh bgColorRed">
+			<p class="flex row center-vh">DETAILS OF YOUR ENQUIRY</p>
+		</div>
+		<div id="booking-form" class="flex column center-v">
+			<div class="flex column start width-full">
+				<p>Your Name*</p>
+				<input id="form-name" class="width-full" type="text" placeholder=""/>
+			</div>
+			<div class="flex column start width-full">
+				<p>Your Email*</p>
+				<input id="form-email" class="width-full" type="email" placeholder=""/>
+			</div>
+			<div class="flex row center-vh width-full overflow-hidden">
+				<div class="flex column start width-3-4">
+					<p>Your Number*</p>
+					<input id="form-number" class="width-full" type="text" placeholder=""/>
+				</div>
+				<div class="flex column start width-1-4">
+					<p>Number of Guests*</p>
+					<input id="form-guests" class="width-full" type="number" max="10" placeholder=""/>
+				</div>
+			</div>
+			<div class="flex column start width-full">
+				<p>Enquiry Information</p>
+				<textarea id="form-enquiry" type="text"></textarea>
+			</div>
+			<div class="flex column center-vh width-full">
+				<p><i>*Required field</i></p>
+			</div>
+		</div>
+	</div>
+	<div id="calender-panel" class="flex row center-v end">
+		<div id="info" class="flex column center-vh bgColorDarkRed">
+			<div id="info-titles" class="flex row center-vh">
+				<p class="flex column center-vh">Start Date</p>
+				<p class="flex column center-vh">End Date</p>
+			</div>
+			<div class="flex row center-vh bgColorRed">
+				<p class="flex column center-vh" id="startdate"></p>
+				<p class="flex column center-vh" id="enddate"></p>
+			</div>
+		</div>
+		<div id="clear" class="flex column center-vh bgColorDarkRed">
+			<p>CLEAR SELECTION</p>
+		</div>
+	</div>
+</div>
 
-      var checkTime = function() {
-        var today = weekday[now.getDay()];
-        var timeDiv = document.getElementById('timeDiv');
-        var dayOfWeek = now.getDay();
-        var hour = now.getHours();
-        var minutes = now.getMinutes();
+<div id="calender-buttons" class="flex row center-vh wrap">
+	<div id="make-booking" class="flex column center-vh">
+		<p>MAKE BOOKING ENQUIRY</p>
+	</div>
+</div>
+  <script>
+  var currentMonth = new Date().getMonth();
+var currentYear = new Date().getFullYear();
+var clickedDays = 0;
+var bookingSteps = 0;
+var lastClickedDay;
+var startDate = "";
+var endDate = "";
+var monthNames = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"
+];
+var monthShortNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+var bookedDates = [];
+var selectedDates = [];
 
-        //add AM or PM
-        var suffix = hour >= 12 ? "PM" : "AM";
 
-        // add 0 to one digit minutes
-        if (minutes < 10) {
-          minutes = "0" + minutes
-        };
-        if ((dayOfWeek == 0 || dayOfWeek == 6) && hour >= 13 && hour <= 23) {
-          hour = ((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15 timeDiv.innerHTML='it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
-          ' - we\' re open!';
-          timeDiv.className = 'open';
-        } else if ((dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 16 && hour <= 23) {
-          hour = ((hour + 11) % 12 + 1);
-          timeDiv.innerHTML = 'it\' s ' + today + ' ' + hour + ' :' + minutes + suffix +
-            ' - we\' re open!';
-          timeDiv.className = 'open';
-        } else {
-          if (hour == 0 || hour > 12) {
-            hour = ((hour + 11) % 12 + 1); //i.e. show 1:15 instead of 13:15
-          }
-          timeDiv.innerHTML = 'It\'s ' + today + ' ' + hour + ':' + minutes + suffix + ' - we\'re closed!';
-          timeDiv.className = 'closed';
-        }
-      };
+Date.prototype.addDays = function(days) {
+var dat = new Date(this.valueOf())
+dat.setDate(dat.getDate() + days);
+return dat;
+}
+function formatDates(dates) {
+if (dates != null) {
+var newDateArray = [];
+for (var i = 0; i < dates.length; i++) {
+  var date = "";
+  date += dayNames[dates[i].getDay()] + "-";
+  date += dates[i].getDate() + "-";
+  date += monthNames[dates[i].getMonth()] + "-";
+  date += dates[i].getFullYear();
+  newDateArray.push(date);
+}
+return newDateArray;
+}
+return null;
+}
+function getDates(startDate, stopDate) {
+if (startDate != "" && endDate != "") {
+var dateArray = new Array();
+var currentDate = startDate;
+while (currentDate <= stopDate) {
+  dateArray.push(new Date(currentDate))
+  currentDate = currentDate.addDays(1);
+}
+return dateArray;
+}
+return null;
+}
+function validateForm() {
+var formValidated = true;
 
-      var currentDay = weekday[now.getDay()];
-      var currentDayID = "#" + currentDay; //gets todays weekday and turns it into id
-      $(currentDayID).toggleClass("today"); //hightlights today in the view hours modal popup
+if($("#form-name").val() == "" || $("#form-name").val() == null) {
+$("#form-name").addClass("formError");
+formValidated = false;
+}
+else {
+$("#form-name").removeClass("formError");
+}
 
-      setInterval(checkTime, 1000);
-      checkTime();
-    </script>
+if($("#form-number").val() == "" || $("#form-number").val() == null) {
+$("#form-number").addClass("formError");
+formValidated = false;
+}
+else {
+$("#form-number").removeClass("formError");
+}
 
+if($("#form-email").val() == "" || $("#form-email").val() == null) {
+$("#form-email").addClass("formError");
+formValidated = false;
+}
+else {
+$("#form-email").removeClass("formError");
+}
+
+if($("#form-guests").val() == "" || $("#form-guests").val() == null) {
+$("#form-guests").addClass("formError");
+formValidated = false;
+}
+else {
+$("#form-guests").removeClass("formError");
+}
+
+return formValidated;
+}
+
+function clearCalender() {
+clickedDays = 0;
+$(".month div").removeClass("clicked");
+$("#startdate").html("");
+$("#enddate").html("");
+
+startDate = "";
+endDate = "";
+selectedDates = [];
+bookingSteps = 0;
+}
+function clearBooking() {
+$("#booking-form input").val("");
+$("#booking-form textarea").val("");
+
+$("#booking-wrapper").removeClass("opened");
+$("#make-booking").html("MAKE BOOKING ENQUIRY");
+
+
+}
+
+function daysInMonth(month) {
+return new Date(currentYear, month, 0).getDate();
+}
+function displayCalender() {
+var days = daysInMonth(currentMonth + 1);
+
+$("#calender-title p").html(monthNames[currentMonth].toUpperCase());
+$("#calender-content").html("");
+
+for (var i = 1; i < firstDayOffset(new Date()); i++) {
+$("#calender-content").append("<div class='month flex center-vh'></div>");
+}
+for (var i = 1; i <= days; i++) {
+var day = new Date(currentYear, currentMonth, i).getDay();
+var string = "<div class='month'><div id='" + dayNames[day] + "-" + i + "-" + monthNames[currentMonth] + "-" + currentYear + "'class='month-selector flex center-vh clickable' onclick='monthClick(this)'><p>" + i + "</p></div></div>";
+$("#calender-content").append(string);
+}
+
+checkSelected();
+checkBookings();
+}
+function monthClick(e) {
+if ($(e).hasClass("clickable")) {
+clickedDays += 1;
+
+if (clickedDays == 1) {
+  $(e).toggleClass("clicked");
+  startDateIndex = parseInt($(e).attr('id').split('-')[1]);
+  startDate = new Date(currentYear, currentMonth, startDateIndex);
+}
+if (clickedDays > 1) {
+  endDateIndex = parseInt($(e).attr('id').split('-')[1]);
+  endDate = new Date(currentYear, currentMonth, endDateIndex);
+}
+if (endDate > startDate) {
+  var clicked = $(".clicked");
+  $(clicked).not(clicked[0]).removeClass("clicked");
+  $(e).toggleClass("clicked");
+
+  dateArray = getDates(startDate, endDate);
+  dateArray = formatDates(dateArray)
+  selectedDates = dateArray;
+
+  for (var i = 0; i < dateArray.length; i++) {
+    $("#" + dateArray[i]).addClass("clicked");
+  }
+}
+$("#startdate").html(startDate.toString().split(' ').slice(0, 4).join(' '));
+$("#enddate").html(endDate.toString().split(' ').slice(0, 4).join(' '));
+}
+}
+function firstDayOffset(date) {
+return new Date(currentYear, currentMonth, 1).getDay();
+}
+
+function checkBookings() {
+if (bookedDates != null) {
+for (var i = 0; i < bookedDates.length; i++) {
+  var inner = bookedDates[i];
+  for (var j = 0; j < inner.length; j++) {
+    $("#" + inner[j]).removeClass("clickable").delay(400).addClass("booked");
+  }
+}
+}
+}
+function checkSelected() {
+selectedDates = getDates(startDate, endDate);
+selectedDates = formatDates(selectedDates);
+
+if (selectedDates != null) {
+for (var i = 0; i < selectedDates.length; i++) {
+  $("#" + selectedDates[i]).addClass("clicked");
+}
+}
+}
+function addBooking() {
+bookedDates.push(dateArray);
+clearCalender();
+displayCalender();
+}
+
+$(function() {
+displayCalender(currentMonth)
+$("#date").append(new Date);
+});
+
+$("#left").on("click", function() {
+if (currentMonth > 0)
+currentMonth -= 1;
+else {
+currentMonth = 11;
+currentYear -= 1;
+}
+displayCalender();
+});
+$("#right").on("click", function() {
+if (currentMonth < 11)
+currentMonth += 1;
+else {
+currentMonth = 0;
+currentYear += 1;
+}
+displayCalender();
+});
+$("#clear").on("click", function() {
+clearCalender();
+clearBooking();
+});
+$("#make-booking").on("click", function() {
+if(selectedDates != null && selectedDates.length > 0) {
+bookingSteps += 1;
+
+if(bookingSteps == 1) {
+  $("#booking-wrapper").addClass("opened");
+  $("#make-booking").html("SUBMIT ENQUIRY");
+}
+if(bookingSteps == 2) {
+  if(validateForm()) {
+    clearBooking();
+    addBooking();
+  }
+  else {
+    bookingSteps = 1;
+  }
+}
+}
+});
+  </script>
 
 
 
